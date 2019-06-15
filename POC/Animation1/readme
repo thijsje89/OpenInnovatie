@@ -1,0 +1,29 @@
+let tl = anime.timeline({
+            duration: 1000,
+            direction: 'alternate',
+            loop: true,
+            easing: 'easeInOutSine'
+        })
+        
+Hier maak een tijdlijn aan die steeds overnieuw afgespeeld.
+
+tl.add({
+            targets: 'section div',
+            translateY: '80vh',
+            backgroundColor: 'rgb(197, 197, 255)',
+            delay: anime.stagger(100)
+        })
+Hier maak ik van alle divs die hij tegenkomt een geanimeert blokje van. 
+Hij verplaatst de divs van boven naar beneden en daarna weer naarboven.
+Ook Wanneer hij onder of beneden heeft bereikt laat hij m daar voor een tijdje hangen voordat ie weer verder animeert.
+
+  tl.add({
+            targets: 'h1',
+            top: '20%',
+            opacity: 1,
+            duration: 1000
+        }, '-=1600')
+        
+Hier target hij de tekst die "ANIMATION 1".
+Die ervoor zorgt dat de text een klein beetje naar beneden beweegt.
+Die ervoor zorgt dat de tekst van niet zichtbaar naar zichtbaar verandert.
