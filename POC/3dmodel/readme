@@ -1,0 +1,30 @@
+Deze file maakt gebruik van de three.js library
+
+var camera = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 0.1, 3000);
+Hier bepaal ik de positie en soort camera die we gaan gebruiken voor de scene.
+
+var scene = new THREE.Scene();
+hier maak ik de een nieuwe scene waarin ik alle blokken laat zien
+
+var light = new THREE.AmbientLight(0xffffff, 0.5);
+hier maak ik het licht die de kleuren van de blokken aanpassen
+
+//OBJECT
+        var geometry = new THREE.CubeGeometry(90, 90, 90);
+        var material = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(-100, 100, -1000);
+        scene.add(mesh);
+ Dit is een van de 5 objecten die ik aangemaakt heb.
+ Als eerst bepaal ik wat voor soort blok het wordt.
+ Daarna geef ik het een bepaalde kleur.
+ Deze voeg ik dan daarna samen met de mesh functie.
+ Daarna zet ik de desbetreffende mesh op de juiste positie in de scene.
+ Als alle attributen van mijn object klaar zijn dan zet ie m in de scene.
+ 
+ function render() {
+            mesh.rotation.x += 0.008;
+            mesh.rotation.y += 0.008;
+ Dit bepaalt de snelheid en manier waarop het object roteert.
+ 
+ 
