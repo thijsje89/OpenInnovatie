@@ -1,0 +1,58 @@
+navigator.getUserMedia = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia;
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({
+                    audio: true
+                },
+                function (stream) {
+                    audioContext = new AudioContext();
+                    analyser = audioContext.createAnalyser();
+                    microphone = audioContext.createMediaStreamSource(stream);
+                    javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+                    analyser.smoothingTimeConstant = 0.8;
+                    analyser.fftSize = 1024;
+                    microphone.connect(analyser);
+                    analyser.connect(javascriptNode);
+                    javascriptNode.connect(audioContext.destination);
+
+Deze code zorgt ervoor dat er een pop up venster komt die vraagt naar de microfoon van de gebruiker.
+Wanneer er yes wordt geclicked dan zoekt deze code de microfoon op en pakt hij de input van de microfoon.
+
+ var length = array.length;
+                        for (var i = 0; i < length; i++) {
+                            values += (array[i]);
+                        }
+javascriptNode.onaudioprocess = function () {
+                        var array = new Uint8Array(analyser.frequencyBinCount);
+                        analyser.getByteFrequencyData(array);
+                        var values = 0;
+                        var length = array.length;
+                        for (var i = 0; i < length; i++) {
+                            values += (array[i]);
+                        }
+                        var average = values / length;
+                        console.log(average);
+                        // circle.style.width = average;
+                        console.log(Math.round(average - 40));
+                        var doubleaverage = average * 8;
+         
+ Wanneer er een de microfoon gebruikt wordt de functie uitgevoerd.
+ Als eerst stoppen we alle frequentie waardes die we binnen krijgen in een array.
+ De uiteindelijke waarde die we gaan gebruiken is average.
+ Dit is de lengte van het array gedeelt door de het variabele value.
+ 
+                        canvasContext.beginPath();
+                        if(average > 50){
+                            canvasContext.strokeStyle = "black";
+                        } else{
+                            canvasContext.strokeStyle = "red";
+                        }
+                        canvasContext.arc(750,750, doubleaverage, 0, 2 * Math.PI);
+                        canvasContext.stroke();
+                     
+ Hierna gebruik ik de waarde average om in een canvas om rode en zwarte circles te maken.
+ 
+
+ 
+ 
