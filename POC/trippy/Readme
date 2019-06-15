@@ -1,0 +1,6 @@
+   var doubleaverage = average * 2;
+               console.log(doubleaverage);
+               document.getElementById("video1").style.filter = 'opacity('+(150-doubleaverage)+'%)';
+  
+  De opacity van video1 is door line 3 aanpasbaar aan de frequentie van de microfoon.
+ 
