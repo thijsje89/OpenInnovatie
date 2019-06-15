@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(10, auto);
+
+    div{
+        background: rgb(240, 69, 69);
+        height: 20vh;
+        border-style: solid;
+        border-color: white;
+        transition: translateX
+    }
+}
+
+h1{
+    font-size: 5em;
+    position: absolute;
+    top: 40%;
+    left: 12%;
+    opacity: 0;
+    z-index: 2;
+    font-style: 'italic';
+    font-family: 'arial';
+    
+}

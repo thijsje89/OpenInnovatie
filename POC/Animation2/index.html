@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="cta">CLICK</button>
+    <svg viewBox="0 0 215 110">
+        <polygon class="polymorph" points="230,110 0,110 0,0 54.63,0 215,0 	" />
+    </svg>
+    <div id="blip">
+        <h1>ANIMATION 2</h1>
+        <button id="cta2">Back</button>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+<script>
+    var btn = document.getElementById("cta");
+    var btn2 = document.getElementById("cta2");
+
+    btn.onclick = function () {
+        var morphing = anime({
+            targets: '.polymorph',
+            points: [{
+                value: "230,110 0,110 0,0 54.63,0 71,73"
+            }, {
+                value: "230,110 0,110 0,0 0,0 71,73"
+            }, ],
+            easing: 'easeOutQuad',
+            duration: 300,
+            loop: false
+        });
+        anime({
+            targets: '#blip',
+            opacity: 1,
+            duration: 500,
+            translateY: 150
+
+        })
+
+        var promise = morphing.finished.then(() => {
+
+            btn2.onclick = function () {
+                var morphing = anime({
+                    targets: '.polymorph',
+                    points: [{
+                        value: "230,110 0,110 0,0 54.63,0 215,0"
+                    },  ],
+                    easing: 'easeOutQuad',
+                    duration: 300,
+                    loop: false
+                });
+                anime({
+                        targets: '#blip',
+                        opacity: 0,
+                        duration: 500,
+                        translateY: -800
+
+                    })
+            }
+
+        })
+    }
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+:root {
+    --color: red;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 500px) {
+  
+    :root {
+      font-size: 12px;
+    }
+  
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color);
+    overflow:hidden;
+  }
+  
+  .main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 .6rem;
+    
+    color: #232121;
+    text-align: center;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 4rem;
+  }
+  
+  .description {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  
+  .value {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+  
+  .color-value {
+    font-weight: bold;
+  }
+  
+  .loader {
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  #sound{
+      width: 50px;
+      display: inline;
+  }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <h1>ANIMATION 1</h1>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+
+    <script>
+        let tl = anime.timeline({
+            duration: 1000,
+            direction: 'alternate',
+            loop: true,
+            easing: 'easeInOutSine'
+        })
+
+        tl.add({
+            targets: 'section div',
+            translateY: '80vh',
+            backgroundColor: 'rgb(197, 197, 255)',
+
+            delay: anime.stagger(100)
+        })
+
+        tl.add({
+            targets: 'h1',
+            top: '20%',
+            opacity: 1,
+            duration: 1000
+        }, '-=1600')
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+html, body {
+	margin: 0;
+	overflow: hidden;
+	font-family: sans-serif;
+	background: #13091B;
+	height: 100%;
+}
+#three-container {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+.play-btn {
+	color: #13091B;
+	background: rgb(153, 0, 77);
+	display: inline-block;
+	padding: 16px 48px;
+	font-size: 18px;
+	font-weight: 900;
+	cursor: pointer;
+	letter-spacing: 0.1em;
+	z-index: 1;
+	transition: 0.5s;
+}
+.play-btn:hover{
+	color: rgb(153, 0, 77);
+	background: #13091B;
+	transition: 0.5s;
+}
+.play-btn1{
+	color: #13091B;
+	background: rgb(153, 0, 77);
+	display: inline-block;
+	padding: 16px 48px;
+	font-size: 18px;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+	z-index: 1;
+}

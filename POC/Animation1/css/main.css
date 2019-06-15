@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[10];
+      grid-template-columns: repeat(10, auto);
+}
+
+section div {
+  background: #f04545;
+  height: 20vh;
+  border-style: solid;
+  border-color: white;
+  -webkit-transition: translateX;
+  transition: translateX;
+}
+
+h1 {
+  font-size: 5em;
+  position: absolute;
+  top: 40%;
+  left: 12%;
+  opacity: 0;
+  z-index: 2;
+  font-style: 'italic';
+  font-family: 'arial';
+}
+/*# sourceMappingURL=main.css.map */

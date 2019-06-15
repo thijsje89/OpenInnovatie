@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Speak</title>
+</head>
+
+<body>
+    <main class="main">
+        <h1 class="title">Speak! <img src="Sound.svg" id="sound"></img></h1>
+        
+        <p class="value">Color-name: <span class="color-value" data-js="varValue">Red</span></p>
+        <span class="loader"></span>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    <script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        const span = document.querySelector('[data-js="varValue"]');
+        const main = document.querySelector('.main');
+        const loader = document.querySelector('.loader');
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+
+        recognition.addEventListener('result', e => {
+            const transcript = Array.from(e.results)
+                .map(result => result[0].transcript)
+
+            document.body.style.setProperty('--color', transcript);
+            span.textContent = transcript;
+            loader.textContent = '';
+        });
+
+        recognition.addEventListener('start', () => loader.textContent = 'Detecting...');
+
+        recognition.addEventListener('end', recognition.start);
+
+        recognition.start();
+    </script>
+</body>
+
+</html>

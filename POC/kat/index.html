@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <canvas id="canvas" width="150" height="600"></canvas>
+    <img src="Asset 1.svg" id="image"></img>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script>
+        navigator.getUserMedia = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia;
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({
+                    audio: true
+                },
+                function (stream) {
+                    audioContext = new AudioContext();
+                    analyser = audioContext.createAnalyser();
+                    microphone = audioContext.createMediaStreamSource(stream);
+                    javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+
+                    analyser.smoothingTimeConstant = 0.8;
+                    analyser.fftSize = 1024;
+
+                    microphone.connect(analyser);
+                    analyser.connect(javascriptNode);
+                    javascriptNode.connect(audioContext.destination);
+
+                    //var circle = document.getElementById("circle");
+
+                    canvasContext = $("#canvas")[0].getContext("2d");
+                    $('#image').attr('src', 'Asset 1.svg');
+
+                    javascriptNode.onaudioprocess = function () {
+                        var array = new Uint8Array(analyser.frequencyBinCount);
+                        analyser.getByteFrequencyData(array);
+                        var values = 0;
+
+                        var length = array.length;
+                        for (var i = 0; i < length; i++) {
+                            values += (array[i]);
+                        }
+
+                        var average = values / length;
+                        console.log(average);
+                        // circle.style.width = average;
+                        console.log(Math.round(average - 40));
+                        var doubleaverage = average * 8;
+                        canvasContext.clearRect(0, 0, 150, 600);
+                        canvasContext.fillStyle = '#0979cc';
+                        canvasContext.fillRect(0, 600 - doubleaverage, 150, 600);
+                        canvasContext.fillText(Math.round(doubleaverage), -2, 600);
+
+                        if (average >= 40) {
+                            $('#image').attr('src', 'Asset 2.svg');
+                        } else {
+                            $('#image').attr('src', 'Asset 1.svg');
+                        }
+
+                    } // end fn stream
+                },
+                function (err) {
+                    console.log("The following error occured: " + err.name)
+                });
+        } else {
+            console.log("getUserMedia not supported");
+        }
+    </script>
+</body>
+
+</html>

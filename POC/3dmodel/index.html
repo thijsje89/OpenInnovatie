@@ -1,0 +1,134 @@
+<html>
+<head>
+    <title>shapes</title>
+
+    <style>
+    	body{
+    		margin: 0;
+    		overflow: hidden;
+        }
+
+        canvas{
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas"></canvas>
+
+    <script src="three.js"></script>
+    <script>
+
+        //RENDERER
+        var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('myCanvas'), antialias: true});
+        renderer.setClearColor(0xf2a53a);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        //CAMERA
+        //var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+        var camera = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 0.1, 3000);
+
+        //SCENE
+        var scene = new THREE.Scene();
+
+        //LIGHTS
+        var light = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(light);
+        
+        var light1 = new THREE.PointLight(0xffffff, 0.5);
+        scene.add(light1);
+
+        //OBJECT
+        var geometry = new THREE.CubeGeometry(90, 90, 90);
+        var material = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(-100, 100, -1000);
+
+        scene.add(mesh);
+
+        var geometry2 = new THREE.ConeGeometry( 60, 100, 32 );
+        var material2 = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh2 = new THREE.Mesh(geometry2, material2);
+        mesh2.position.set(100, 100, -1000);
+
+        scene.add(mesh2);
+
+        var geometry3 = new THREE.ConeGeometry( 60, 100, 3 );
+        var material3 = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh3 = new THREE.Mesh(geometry3, material3);
+        mesh3.position.set(100, -100, -1000);
+
+        scene.add(mesh3);
+
+        var geometry4 = new THREE.TorusKnotGeometry( 40, 10, 100, 16 );
+        var material4 = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh4 = new THREE.Mesh(geometry4, material4);
+        mesh4.position.set(-100, -100, -1000);
+
+        scene.add(mesh4);
+
+        var geometry5 = new THREE.SphereGeometry( 60, 10, 10 );
+        var material5 = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh5 = new THREE.Mesh(geometry5, material5);
+        mesh5.position.set(280, -100, -1000);
+
+        scene.add(mesh5);
+
+        var geometry6 = new THREE.CylinderGeometry( 50, 50, 80, 32 );
+        var material6 = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh6 = new THREE.Mesh(geometry6, material6);
+        mesh6.position.set(280, 100, -1000);
+
+        scene.add(mesh6);
+
+        var geometry7 = new THREE.CylinderGeometry( 50, 20, 80, 32 );
+        var material7 = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh7 = new THREE.Mesh(geometry7, material7);
+        mesh7.position.set(-280, 100, -1000);
+
+        scene.add(mesh7);
+
+        var geometry8 = new THREE.ConeGeometry( 60, 100, 6 );
+        var material8 = new THREE.MeshLambertMaterial({color: 0xff4502});
+        var mesh8 = new THREE.Mesh(geometry8, material);
+        mesh8.position.set(-280, -100, -1000);
+
+        scene.add(mesh8);
+
+        //RENDER LOOP
+        requestAnimationFrame(render);
+        
+        function render() {
+            mesh.rotation.x += 0.008;
+            mesh.rotation.y += 0.008;
+
+            mesh2.rotation.x += 0.008;
+            mesh2.rotation.y += 0.008;
+            
+            mesh3.rotation.x += 0.008;
+            mesh3.rotation.y += 0.008;
+
+            mesh4.rotation.x += 0.008;
+            mesh4.rotation.y += 0.008;
+
+            mesh5.rotation.x += 0.008;
+            mesh5.rotation.y += 0.008;
+
+            mesh6.rotation.x += 0.008;
+            mesh6.rotation.y += 0.008;
+            
+            mesh7.rotation.x += 0.008;
+            mesh7.rotation.y += 0.008;
+
+            mesh8.rotation.x += 0.008;
+            mesh8.rotation.y += 0.008;
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(render);
+        }
+    </script>
+</body>
+</html>
