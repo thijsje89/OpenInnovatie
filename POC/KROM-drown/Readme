@@ -1,0 +1,15 @@
+ Zie KROM-circle voor uitleg over de gebruik van de microfoon (is hetzelfde als deze).
+ 
+ canvasContext.clearRect(0, 0, 150, 600);
+                        canvasContext.fillStyle = '#0979cc';
+                        canvasContext.fillRect(0, 600 - doubleaverage, 150, 600);
+                        canvasContext.fillText(Math.round(doubleaverage), -2, 600);
+                        if (average >= 40) {
+                            $('#image').attr('src', 'Asset 2.svg');
+                        } else {
+                            $('#image').attr('src', 'Asset 1.svg');
+                        }
+Hier maak een canvas aan met daarin een vierkant.
+Dit vierkant geef ik de kleur blauw.
+De hoogte van dit vierkant manipuleer ik met de doubleaverage.
+Als de frequentie boven 40 verandert het poppetje naar een verdrinkent poppetje en andersom.
