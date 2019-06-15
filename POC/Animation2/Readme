@@ -1,0 +1,44 @@
+
+
+btn.onclick = function () {
+        var morphing = anime({
+            targets: '.polymorph',
+            points: [{
+                value: "230,110 0,110 0,0 54.63,0 71,73"
+            }, {
+                value: "230,110 0,110 0,0 0,0 71,73"
+            }, ],
+            easing: 'easeOutQuad',
+            duration: 300,
+            loop: false
+        });
+
+<polygon class="polymorph" points="230,110 0,110 0,0 54.63,0 215,0 	" />
+
+Als eerst voert hij de functie uit wanneer er op de knop gedrukt wordt.
+Hierna maken we een variabele waarin we waardes instoppen.
+Hij target de svg polygon die we gemaakt hebben.
+We veranderen een van de waardes in de tweede value waardoor de animatie ontstaat.
+
+anime({
+            targets: '#blip',
+            opacity: 1,
+            duration: 500,
+            translateY: 150
+        })
+        
+Dit zorgt ervoor dat de button verdwijnt
+
+var promise = morphing.finished.then(() => {
+            btn2.onclick = function () {
+                var morphing = anime({
+                    targets: '.polymorph',
+                    points: [{
+                        value: "230,110 0,110 0,0 54.63,0 215,0"
+                    },  ],
+                    easing: 'easeOutQuad',
+                    duration: 300,
+                    loop: false
+                });
+
+Dit zorgt ervoor dat de animatie weer terug wordt afgespeeld.
